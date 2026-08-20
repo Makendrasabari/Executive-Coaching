@@ -271,44 +271,62 @@
     const navItems = sidebar.querySelectorAll('.sidebar-nav-item');
     const panels = document.querySelectorAll('.dash-panel');
 
+    function activatePanel(panelId, labelText) {
+      if (!panelId) return;
+
+      navItems.forEach(function (nav) {
+        const pId = nav.getAttribute('data-panel') || (nav.getAttribute('href') ? nav.getAttribute('href').replace('#', '') : null);
+        if (pId === panelId) {
+          nav.classList.add('active');
+          if (!labelText) labelText = nav.textContent.trim();
+        } else {
+          nav.classList.remove('active');
+        }
+      });
+
+      const mainHeading = document.getElementById('dashboard-heading');
+      if (mainHeading) {
+        let text = labelText ? labelText.replace(/[\u00A0\u1680\u180E\u2000-\u200B\u202F\u205F\u3000\uFEFF]/g, ' ').trim() : '';
+        if (!text || text.toLowerCase() === 'overview' || text.toLowerCase() === 'dashboard' || panelId === 'panel-overview') {
+          text = window.location.pathname.includes('coach') ? 'Coach Dashboard' : 'Executive Dashboard';
+        }
+        mainHeading.textContent = text;
+      }
+
+      if (panels.length > 0) {
+        panels.forEach(function (p) {
+          p.classList.remove('active-panel');
+          p.style.display = 'none';
+        });
+        const targetPanel = document.getElementById(panelId);
+        if (targetPanel) {
+          targetPanel.style.display = 'block';
+          targetPanel.classList.add('active-panel');
+        }
+      }
+
+      if (sidebar.classList.contains('open')) {
+        sidebar.classList.remove('open');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     navItems.forEach(function (item) {
       item.addEventListener('click', function (e) {
         const panelId = item.getAttribute('data-panel') || (item.getAttribute('href') ? item.getAttribute('href').replace('#', '') : null);
-        
         if (panelId) {
           e.preventDefault();
-          navItems.forEach(function (nav) { nav.classList.remove('active'); });
-          item.classList.add('active');
-
-          // Dynamically update dashboard navbar heading text to active sidebar title
-          const mainHeading = document.getElementById('dashboard-heading');
-          if (mainHeading) {
-            let labelText = item.textContent.trim();
-            // Clean up text if item contains icons or badge text
-            labelText = labelText.replace(/[\u00A0\u1680\u180E\u2000-\u200B\u202F\u205F\u3000\uFEFF]/g, ' ');
-            if (labelText.toLowerCase() === 'overview') {
-              labelText = window.location.pathname.includes('coach') ? 'Coach Dashboard' : 'Executive Dashboard';
-            }
-            mainHeading.textContent = labelText;
-          }
-
-          if (panels.length > 0) {
-            panels.forEach(function (p) {
-              p.classList.remove('active-panel');
-              p.style.display = 'none';
-            });
-            const targetPanel = document.getElementById(panelId);
-            if (targetPanel) {
-              targetPanel.style.display = 'block';
-              targetPanel.classList.add('active-panel');
-            }
-          }
-
-          if (sidebar.classList.contains('open')) {
-            sidebar.classList.remove('open');
-          }
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          activatePanel(panelId, item.textContent.trim());
         }
+      });
+    });
+
+    // Handle Stackly Logo Click — redirect to Dashboard Home (panel-overview) within Dashboard
+    const logoLinks = document.querySelectorAll('.sidebar-logo, .topbar-logo-link');
+    logoLinks.forEach(function (logo) {
+      logo.addEventListener('click', function (e) {
+        e.preventDefault();
+        activatePanel('panel-overview', window.location.pathname.includes('coach') ? 'Coach Dashboard' : 'Executive Dashboard');
       });
     });
   }
@@ -1473,6 +1491,106 @@
   }
 
   // ─────────────────────────────────────────
+  // CUSTOM DROPDOWN COMPONENT ENHANCER
+  // ─────────────────────────────────────────
+  function initCustomDropdowns() {
+    const selects = document.querySelectorAll('select');
+    if (!selects.length) return;
+
+    selects.forEach(function (selectEl) {
+      if (selectEl.classList.contains('custom-dropdown-processed')) return;
+      selectEl.classList.add('custom-dropdown-processed');
+
+      // Hide native select visually while keeping it functional for forms
+      selectEl.style.display = 'none';
+
+      // Create custom dropdown wrapper
+      const wrapper = document.createElement('div');
+      wrapper.className = 'custom-dropdown-container';
+
+      const options = Array.from(selectEl.options);
+      let selectedOption = selectEl.options[selectEl.selectedIndex] || options[0];
+
+      // Custom Toggle Button
+      const toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'custom-dropdown-toggle';
+      toggle.innerHTML = `
+        <span class="custom-dropdown-label">${selectedOption ? selectedOption.text : ''}</span>
+        <span class="material-icons custom-dropdown-caret">expand_more</span>
+      `;
+
+      // Custom Menu
+      const menu = document.createElement('div');
+      menu.className = 'custom-dropdown-menu';
+
+      options.forEach(function (opt, idx) {
+        const item = document.createElement('div');
+        item.className = 'custom-dropdown-item' + (opt.selected ? ' selected' : '') + (opt.disabled ? ' disabled' : '');
+        item.setAttribute('data-value', opt.value || opt.text);
+        item.setAttribute('data-index', idx);
+        item.innerHTML = `
+          <span>${opt.text}</span>
+          <span class="material-icons check-icon">check</span>
+        `;
+
+        if (!opt.disabled) {
+          item.addEventListener('click', function (e) {
+            e.stopPropagation();
+            selectEl.selectedIndex = idx;
+            selectEl.dispatchEvent(new Event('change', { bubbles: true }));
+
+            // Update UI
+            wrapper.querySelectorAll('.custom-dropdown-item').forEach(function (i) { i.classList.remove('selected'); });
+            item.classList.add('selected');
+            toggle.querySelector('.custom-dropdown-label').textContent = opt.text;
+
+            wrapper.classList.remove('open');
+          });
+        }
+
+        menu.appendChild(item);
+      });
+
+      wrapper.appendChild(toggle);
+      wrapper.appendChild(menu);
+
+      // Insert wrapper after selectEl in DOM
+      if (selectEl.parentNode) {
+        selectEl.parentNode.insertBefore(wrapper, selectEl.nextSibling);
+      }
+
+      // Toggle dropdown open/close
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        // Close all other open custom dropdowns
+        document.querySelectorAll('.custom-dropdown-container.open').forEach(function (other) {
+          if (other !== wrapper) other.classList.remove('open');
+        });
+        wrapper.classList.toggle('open');
+      });
+    });
+
+    // Close open dropdowns on outside click
+    document.addEventListener('click', function (e) {
+      document.querySelectorAll('.custom-dropdown-container.open').forEach(function (wrapper) {
+        if (!wrapper.contains(e.target)) {
+          wrapper.classList.remove('open');
+        }
+      });
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.custom-dropdown-container.open').forEach(function (wrapper) {
+          wrapper.classList.remove('open');
+        });
+      }
+    });
+  }
+
+  // ─────────────────────────────────────────
   // INIT
   // ─────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', function () {
@@ -1486,6 +1604,7 @@
     initNotificationRedirect();
     initProgressBars();
     initCounters();
+    initCustomDropdowns();
     initGlobalSixCardAnimation();
     initOrbitalTraceAnimation();
     initTestimonialMarquee();

@@ -6,6 +6,7 @@
   <title>Coach Dashboard — Stackly Coaching Platform</title>
   <meta name="description" content="Stackly Coach portal. Manage your executive clients, coaching sessions, notes, progress tracking, and coaching analytics.">
   <link rel="icon" type="image/webp" href="Assets/stackly logo03.webp">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/dashboard.css">
 </head>
@@ -26,7 +27,7 @@
     <!-- ═══════ SIDEBAR ═══════ -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
-        <a href="index.html" class="sidebar-logo">
+        <a href="#panel-overview" class="sidebar-logo" data-panel="panel-overview">
           <img src="Assets/stackly logo03.webp" alt="Stackly">
         </a>
         <button class="sidebar-close" id="sidebar-close" aria-label="Close sidebar">✕</button>
@@ -107,6 +108,7 @@
 
         <!-- ── TAB PANEL 1: Overview ── -->
         <div class="dash-panel active-panel" id="panel-overview">
+          <!-- Section 1: Coach KPI Cards -->
           <div class="dash-overview-grid">
             <div class="dash-stat-card">
               <div class="dash-stat-label">Active Executives</div>
@@ -130,9 +132,10 @@
             </div>
           </div>
 
-          <!-- Overview Summary Grid -->
+          <!-- Section 2: Overview Summary Grid -->
           <div class="dash-grid-2" style="margin-top: 24px;">
             <div class="dash-card">
+              <span class="dash-section-tag tag-gold">Section 2 · Next Engagement</span>
               <div class="dash-card-title">Next Scheduled Session</div>
               <div class="dash-card-subtitle">Upcoming 1:1 engagement</div>
               <div class="dash-card-divider"></div>
@@ -146,6 +149,7 @@
               </div>
             </div>
             <div class="dash-card">
+              <span class="dash-section-tag tag-blue">Section 2 · Client Activity</span>
               <div class="dash-card-title">Recent Client Activity</div>
               <div class="dash-card-subtitle">Latest submitted reflection</div>
               <div class="dash-card-divider"></div>
@@ -157,11 +161,69 @@
               </div>
             </div>
           </div>
+
+          <!-- Section 3: Pending Reviews & Client Submissions Alert Box -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-green">Section 3 · Review Console</span>
+            <div class="dash-card-title">Pending Reviews & Submissions</div>
+            <div class="dash-card-subtitle">Client journal logs and 360 feedback awaiting your coaching review</div>
+            <div class="dash-card-divider"></div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div class="resource-download-item">
+                <div style="display: flex; align-items: center; gap: 12px; min-width: 0; flex: 1;">
+                  <div class="session-avatar" style="width: 32px; height: 32px; font-size: 0.8rem; flex-shrink: 0;">JM</div>
+                  <div style="min-width: 0;">
+                    <div style="font-size: 0.86rem; font-weight: 600; color: var(--text-primary); word-break: break-word;">James Mercer — Morning Routine Protocol Feedback</div>
+                    <div style="font-size: 0.76rem; color: var(--text-muted);">Submitted Aug 18 · Needs Coach Remarks</div>
+                  </div>
+                </div>
+                <a href="404.html" class="quick-action-btn" style="padding: 6px 12px; font-size: 0.78rem; flex-shrink: 0;">Review Journal</a>
+              </div>
+              <div class="resource-download-item">
+                <div style="display: flex; align-items: center; gap: 12px; min-width: 0; flex: 1;">
+                  <div class="session-avatar" style="width: 32px; height: 32px; font-size: 0.8rem; flex-shrink: 0;">SR</div>
+                  <div style="min-width: 0;">
+                    <div style="font-size: 0.86rem; font-weight: 600; color: var(--text-primary); word-break: break-word;">Sophia Raines — Q3 Board Strategy Alignment Draft</div>
+                    <div style="font-size: 0.76rem; color: var(--text-muted);">Submitted Aug 17 · Pre-read review</div>
+                  </div>
+                </div>
+                <a href="404.html" class="quick-action-btn" style="padding: 6px 12px; font-size: 0.78rem; flex-shrink: 0;">Review Pre-read</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Quick Action Hub & Session Console -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-purple">Section 4 · Coach Actions</span>
+            <div class="dash-card-title">Coach Action Hub</div>
+            <div class="dash-card-subtitle">Fast tools to manage clients and log session notes</div>
+            <div class="dash-card-divider"></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+              <a href="404.html" class="quick-action-btn">
+                <span class="material-icons">event</span>
+                <span>Manage Availability</span>
+              </a>
+              <a href="404.html" class="quick-action-btn">
+                <span class="material-icons">edit_note</span>
+                <span>Add Client Note</span>
+              </a>
+              <a href="404.html" class="quick-action-btn">
+                <span class="material-icons">people</span>
+                <span>View Client Roster</span>
+              </a>
+              <a href="404.html" class="quick-action-btn">
+                <span class="material-icons">bar_chart</span>
+                <span>Export Performance Report</span>
+              </a>
+            </div>
+          </div>
         </div>
 
         <!-- ── TAB PANEL 2: Clients ── -->
         <div class="dash-panel" id="panel-clients">
+          <!-- Section 1: Active Executive Portfolio -->
           <div class="dash-card">
+            <span class="dash-section-tag tag-gold">Section 1 · Client Portfolio</span>
             <div class="dash-card-title">Active Executive Portfolio</div>
             <div class="dash-card-subtitle">Your current coaching cohort</div>
             <div class="dash-card-divider"></div>
@@ -237,11 +299,68 @@
               </table>
             </div>
           </div>
+
+          <!-- Section 2: Executive Engagement & Health Signals -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-blue">Section 2 · Engagement Health</span>
+            <div class="dash-card-title">Executive Engagement & Health Signals</div>
+            <div class="dash-card-subtitle">Attendance, homework completion rate, and risk monitoring</div>
+            <div class="dash-card-divider"></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+              <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: #10b981; margin-bottom: 4px;">Sophia Raines (Group CEO)</div>
+                <div style="font-size: 0.84rem; color: var(--text-secondary);">100% Attendance · 5/5 Action Items Completed</div>
+                <div style="font-size: 0.75rem; color: var(--gold-primary); margin-top: 6px; font-weight: 600;">Health: High Momentum</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--gold-primary); margin-bottom: 4px;">James Mercer (CEO)</div>
+                <div style="font-size: 0.84rem; color: var(--text-secondary);">95% Attendance · 4/5 Action Items Completed</div>
+                <div style="font-size: 0.75rem; color: var(--gold-primary); margin-top: 6px; font-weight: 600;">Health: Strong Progress</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Cohort & Tier Segmentation -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-green">Section 3 · Cohort Tiers</span>
+            <div class="dash-card-title">Executive Cohort & Tier Breakdown</div>
+            <div class="dash-card-subtitle">Active client allocation by seniority tier</div>
+            <div class="dash-card-divider"></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+              <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <div style="font-weight: 700; color: var(--gold-primary); font-size: 0.9rem;">C-Suite / Board Tier (3 Clients)</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">James Mercer, Sophia Raines, David Kinsella</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <div style="font-weight: 700; color: #3b82f6; font-size: 0.9rem;">Senior VP / Officer Tier (1 Client)</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Laura Whitmore (CFO)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Onboarding & Diagnostic Pipeline -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-purple">Section 4 · Incoming Pipeline</span>
+            <div class="dash-card-title">Incoming Client Onboarding & Diagnostic Pipeline</div>
+            <div class="dash-card-subtitle">Newly matched executives undergoing diagnostic assessment</div>
+            <div class="dash-card-divider"></div>
+            <div class="dash-activity-item" style="padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 8px;">
+              <div class="dash-activity-left">
+                <div>
+                  <div class="dash-activity-title">Alexandra Torres — Managing Director, Solis Capital</div>
+                  <div class="dash-activity-subtitle">Matched Aug 19 · Diagnostic assessment sent</div>
+                </div>
+              </div>
+              <span class="session-status status-upcoming dash-activity-badge">Onboarding</span>
+            </div>
+          </div>
         </div>
 
         <!-- ── TAB PANEL 3: Schedule ── -->
         <div class="dash-panel" id="panel-schedule">
+          <!-- Section 1: Upcoming Session Calendar -->
           <div class="dash-card">
+            <span class="dash-section-tag tag-gold">Section 1 · Calendar</span>
             <div class="dash-card-title">Coaching Session Schedule</div>
             <div class="dash-card-subtitle">Your scheduled coaching calendar</div>
             <div class="dash-card-divider"></div>
@@ -287,11 +406,53 @@
               <span class="session-status status-scheduled">Scheduled</span>
             </div>
           </div>
+
+          <!-- Section 2: Weekly Availability & Slot Manager -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-blue">Section 2 · Slot Manager</span>
+            <div class="dash-card-title">Weekly Availability & Slot Settings</div>
+            <div class="dash-card-subtitle">Set open 1:1 coaching slots and buffer settings</div>
+            <div class="dash-card-divider"></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+              <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <div style="font-weight: 600; font-size: 0.85rem; color: var(--text-primary);">Tuesdays & Thursdays</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">09:00 AM – 01:00 PM (EST)</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <div style="font-weight: 600; font-size: 0.85rem; color: var(--text-primary);">Wednesdays</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">02:00 PM – 05:00 PM (EST)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Pre-Session Preparation & Focus Notes -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-green">Section 3 · Session Prep</span>
+            <div class="dash-card-title">Pre-Session Preparation Briefs</div>
+            <div class="dash-card-subtitle">Key discussion points for tomorrow's session with James Mercer</div>
+            <div class="dash-card-divider"></div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+              • Review James's decision-making journal on reactive morning schedules.<br>
+              • Probe into board presentation narrative structure for Q4 offsite.<br>
+              • Check progress on direct report 1:1 delegation framework.
+            </div>
+          </div>
+
+          <!-- Section 4: Reschedule Requests & Audit Log -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-purple">Section 4 · Reschedule Audit</span>
+            <div class="dash-card-title">Reschedule Requests & Audit History</div>
+            <div class="dash-card-subtitle">Recent calendar adjustments and requests</div>
+            <div class="dash-card-divider"></div>
+            <div style="font-size: 0.82rem; color: var(--text-muted);">No pending reschedule requests. All upcoming slots confirmed.</div>
+          </div>
         </div>
 
         <!-- ── TAB PANEL 4: Notes ── -->
         <div class="dash-panel" id="panel-notes">
+          <!-- Section 1: Session Observations -->
           <div class="dash-card">
+            <span class="dash-section-tag tag-gold">Section 1 · Observations</span>
             <div class="dash-card-title">Coaching Notes & Observations</div>
             <div class="dash-card-subtitle">Session observations and follow-up points</div>
             <div class="dash-card-divider"></div>
@@ -320,13 +481,72 @@
               <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; padding-left: 2px;">Sophia has significantly elevated her board presence. Pre-read materials are now strategically framed rather than operationally detailed. Recommend focus next session: challenging dissenting board members with confidence.</p>
             </div>
           </div>
+
+          <!-- Section 2: Quick Note Creation Console -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-blue">Section 2 · Add Note</span>
+            <div class="dash-card-title">Log New Coaching Note</div>
+            <div class="dash-card-subtitle">Record private observation or action item for a client</div>
+            <div class="dash-card-divider"></div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <select style="background: var(--dark-900); border: 1px solid var(--border-color); color: var(--text-primary); padding: 10px; border-radius: 6px; font-size: 0.85rem;">
+                <option>Select Client: James Mercer (CEO)</option>
+                <option>Select Client: Sophia Raines (Group CEO)</option>
+                <option>Select Client: David Kinsella (Chairman)</option>
+                <option>Select Client: Laura Whitmore (CFO)</option>
+              </select>
+              <textarea placeholder="Type session observations, breakthroughs, or homework assigned..." style="background: var(--dark-900); border: 1px solid var(--border-color); color: var(--text-primary); padding: 12px; border-radius: 6px; font-size: 0.85rem; min-height: 90px; font-family: inherit;"></textarea>
+              <a href="404.html" class="auth-submit" style="width: auto; align-self: flex-start; padding: 10px 20px; margin: 0; text-decoration: none; text-align: center; display: inline-block;">Save Private Note</a>
+            </div>
+          </div>
+
+          <!-- Section 3: Executive Homework & Assigned Tasks Tracker -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-green">Section 3 · Client Homework</span>
+            <div class="dash-card-title">Assigned Executive Homework Tracker</div>
+            <div class="dash-card-subtitle">Tasks assigned across active executive cohort</div>
+            <div class="dash-card-divider"></div>
+            <div class="dash-homework-list">
+              <div class="dash-homework-item">
+                <div class="dash-homework-text"><strong>James Mercer:</strong> Decision-making reflection journal</div>
+                <span class="session-status status-completed dash-homework-badge">Completed</span>
+              </div>
+              <div class="dash-homework-item">
+                <div class="dash-homework-text"><strong>Sophia Raines:</strong> Pre-read board deck narrative draft</div>
+                <span class="session-status status-upcoming dash-homework-badge">Pending Review</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Confidential Vault Records -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-purple">Section 4 · Vault Records</span>
+            <div class="dash-card-title">Confidential Client Vault Records</div>
+            <div class="dash-card-subtitle">Encrypted diagnostic reports and alignment agreements</div>
+            <div class="dash-card-divider"></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
+              <div class="resource-download-item">
+                <div>
+                  <div style="font-weight: 600; font-size: 0.84rem; color: var(--text-primary);">JM_360_Diagnostic_Report.pdf</div>
+                  <div style="font-size: 0.74rem; color: var(--text-muted);">Confidential · James Mercer</div>
+                </div>
+              </div>
+              <div class="resource-download-item">
+                <div>
+                  <div style="font-weight: 600; font-size: 0.84rem; color: var(--text-primary);">SR_Executive_Agreement_2026.pdf</div>
+                  <div style="font-size: 0.74rem; color: var(--text-muted);">Confidential · Sophia Raines</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- ── TAB PANEL 5: Analytics ── -->
         <div class="dash-panel" id="panel-analytics">
           <div class="dash-grid-2">
-            <!-- Coaching Analytics & Visual Metrics -->
+            <!-- Section 1: Coaching Analytics & Visual Metrics -->
             <div class="dash-card">
+              <span class="dash-section-tag tag-gold">Section 1 · Portfolio Performance</span>
               <div class="dash-card-title">Coaching Portfolio Analytics</div>
               <div class="dash-card-subtitle">Programme effectiveness metrics and client distribution</div>
               <div class="dash-card-divider"></div>
@@ -358,10 +578,16 @@
                   <div class="analytics-fill" data-width="84%" style="width: 84%;"></div>
                 </div>
               </div>
+            </div>
 
-              <!-- SVG Visual Analytics: Client Tier Pie Chart & Monthly Session Velocity Bar Chart -->
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-color);">
-                
+            <!-- Section 2: Visual Charts -->
+            <div class="dash-card">
+              <span class="dash-section-tag tag-blue">Section 2 · Visual Charts</span>
+              <div class="dash-card-title">Executive Tier & Monthly Velocity Charts</div>
+              <div class="dash-card-subtitle">Client distribution pie chart and session volume bar chart</div>
+              <div class="dash-card-divider"></div>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px;">
                 <!-- Pie Chart: Executive Tier Breakdown -->
                 <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; text-align: center;">
                   <div style="font-size: 0.82rem; font-weight: 600; color: var(--gold-primary); margin-bottom: 10px;">Executive Tier Breakdown</div>
@@ -400,29 +626,47 @@
                     <text x="164" y="90" fill="var(--gold-primary)" font-size="8" font-weight="bold" text-anchor="middle">Aug</text>
                   </svg>
                 </div>
-
               </div>
             </div>
+          </div>
 
-            <!-- Notifications -->
-            <div class="dash-card">
-              <div class="dash-card-title">Recent Notifications</div>
-              <div class="dash-card-subtitle">Platform updates</div>
-              <div class="dash-card-divider"></div>
+          <!-- Section 3: Notifications -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-green">Section 3 · Activity Stream</span>
+            <div class="dash-card-title">Recent Notifications</div>
+            <div class="dash-card-subtitle">Platform updates</div>
+            <div class="dash-card-divider"></div>
 
-              <div class="notif-item">
-                <div class="notif-dot"></div>
-                <div>
-                  <div class="notif-text">James Mercer submitted his reflection journal.</div>
-                  <div class="notif-time">1 hour ago</div>
-                </div>
+            <div class="notif-item">
+              <div class="notif-dot"></div>
+              <div>
+                <div class="notif-text">James Mercer submitted his reflection journal.</div>
+                <div class="notif-time">1 hour ago</div>
               </div>
-              <div class="notif-item">
-                <div class="notif-dot"></div>
-                <div>
-                  <div class="notif-text">New executive match: Alexandra Torres.</div>
-                  <div class="notif-time">3 hours ago</div>
-                </div>
+            </div>
+            <div class="notif-item">
+              <div class="notif-dot"></div>
+              <div>
+                <div class="notif-text">New executive match: Alexandra Torres.</div>
+                <div class="notif-time">3 hours ago</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Client Satisfaction & NPS Feedback Scores -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-purple">Section 4 · Client Satisfaction</span>
+            <div class="dash-card-title">Client Satisfaction & Net Promoter Score (NPS)</div>
+            <div class="dash-card-subtitle">Feedback ratings provided by executive clients post-engagement</div>
+            <div class="dash-card-divider"></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+              <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px; border: 1px solid var(--border-color); text-align: center;">
+                <div style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 700; color: var(--gold-primary);">9.8 / 10</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Overall Coaching Rating</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px; border: 1px solid var(--border-color); text-align: center;">
+                <div style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 700; color: #10b981;">+92</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Executive Net Promoter Score (NPS)</div>
               </div>
             </div>
           </div>

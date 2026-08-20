@@ -6,6 +6,7 @@
   <title>Executive Dashboard — Stackly Coaching Platform</title>
   <meta name="description" content="Your personal executive coaching dashboard. Track sessions, leadership goals, milestones, and personal development.">
   <link rel="icon" type="image/webp" href="Assets/stackly logo03.webp">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/dashboard.css">
 </head>
@@ -26,7 +27,7 @@
     <!-- ═══════ SIDEBAR ═══════ -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
-        <a href="index.html" class="sidebar-logo">
+        <a href="#panel-overview" class="sidebar-logo" data-panel="panel-overview">
           <img src="Assets/stackly logo03.webp" alt="Stackly">
         </a>
         <button class="sidebar-close" id="sidebar-close" aria-label="Close sidebar">✕</button>
@@ -107,6 +108,7 @@
 
         <!-- ── TAB PANEL 1: Dashboard Overview ── -->
         <div class="dash-panel active-panel" id="panel-overview">
+          <!-- Section 1: Executive KPI Metrics Cards -->
           <div class="dash-overview-grid">
             <div class="dash-stat-card">
               <div class="dash-stat-label">Sessions Completed</div>
@@ -130,9 +132,10 @@
             </div>
           </div>
 
-          <!-- Quick Summary Cards -->
+          <!-- Section 2: Quick Summary Cards -->
           <div class="dash-grid-2" style="margin-top: 24px;">
             <div class="dash-card">
+              <span class="dash-section-tag tag-gold">Section 2 · Engagement</span>
               <div class="dash-card-title">Next Scheduled Engagement</div>
               <div class="dash-card-subtitle">Upcoming 1:1 coaching session</div>
               <div class="dash-card-divider"></div>
@@ -146,6 +149,7 @@
               </div>
             </div>
             <div class="dash-card">
+              <span class="dash-section-tag tag-blue">Section 2 · Focus Area</span>
               <div class="dash-card-title">Active Leadership Focus</div>
               <div class="dash-card-subtitle">Current priority objective</div>
               <div class="dash-card-divider"></div>
@@ -158,13 +162,80 @@
               </div>
             </div>
           </div>
+
+          <!-- Section 3: Recent Activity & Milestone Stream -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-green">Section 3 · Activity Stream</span>
+            <div class="dash-card-title">Recent Activity & Milestone Stream</div>
+            <div class="dash-card-subtitle">Real-time engagement log and feedback submissions</div>
+            <div class="dash-card-divider"></div>
+            <div class="dash-activity-list">
+              <div class="dash-activity-item">
+                <div class="dash-activity-left">
+                  <div class="dash-activity-dot" style="background: #10b981;"></div>
+                  <div>
+                    <div class="dash-activity-title">Completed Reflection Journal: Strategic Bias Awareness</div>
+                    <div class="dash-activity-subtitle">Submitted Aug 18, 2026 · Reviewed by Dr. Ava Reyes</div>
+                  </div>
+                </div>
+                <span class="session-status status-completed dash-activity-badge">Verified</span>
+              </div>
+              <div class="dash-activity-item">
+                <div class="dash-activity-left">
+                  <div class="dash-activity-dot" style="background: var(--gold-primary);"></div>
+                  <div>
+                    <div class="dash-activity-title">Executive Diagnostic Synthesis Report Generated</div>
+                    <div class="dash-activity-subtitle">Aug 14, 2026 · 360 Diagnostic Module</div>
+                  </div>
+                </div>
+                <span class="session-status status-upcoming dash-activity-badge">New Report</span>
+              </div>
+              <div class="dash-activity-item">
+                <div class="dash-activity-left">
+                  <div class="dash-activity-dot" style="background: #3b82f6;"></div>
+                  <div>
+                    <div class="dash-activity-title">New Action Item Added: Stakeholder Alignment Brief</div>
+                    <div class="dash-activity-subtitle">Assigned by Dr. Reyes · Due Aug 25</div>
+                  </div>
+                </div>
+                <span class="session-status status-scheduled dash-activity-badge">Action Required</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Executive Quick Action Hub -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-purple">Section 4 · Quick Action Console</span>
+            <div class="dash-card-title">Executive Quick Action Hub</div>
+            <div class="dash-card-subtitle">Fast triggers for frequent coaching workflows</div>
+            <div class="dash-card-divider"></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+              <a href="404.html" class="quick-action-btn">
+                <span class="material-icons">calendar_today</span>
+                <span>Schedule 1:1 Session</span>
+              </a>
+              <a href="404.html" class="quick-action-btn">
+                <span class="material-icons">edit_note</span>
+                <span>Submit Reflection Journal</span>
+              </a>
+              <a href="404.html" class="quick-action-btn">
+                <span class="material-icons">bar_chart</span>
+                <span>Request 360 Survey</span>
+              </a>
+              <a href="404.html" class="quick-action-btn">
+                <span class="material-icons">folder</span>
+                <span>Access Executive Blueprints</span>
+              </a>
+            </div>
+          </div>
         </div>
 
         <!-- ── TAB PANEL 2: Sessions ── -->
         <div class="dash-panel" id="panel-sessions">
           <div class="dash-grid-2">
-            <!-- Upcoming Sessions -->
+            <!-- Section 1: Upcoming Sessions -->
             <div class="dash-card">
+              <span class="dash-section-tag tag-gold">Section 1 · Upcoming Engagements</span>
               <div class="dash-card-title">Upcoming Coaching Sessions</div>
               <div class="dash-card-subtitle">Your scheduled coaching engagements</div>
               <div class="dash-card-divider"></div>
@@ -198,12 +269,13 @@
 
               <div class="dash-card-divider"></div>
               <a href="404.html" class="service-link" style="font-size: 0.82rem;">
-                Request Additional Session <span class="service-link-arrow"></span>
+                Request Additional Session <span class="material-icons service-link-arrow-icon" style="font-size: 1.15rem; color: var(--gold-primary); transition: transform 0.2s ease; vertical-align: middle;">arrow_forward</span>
               </a>
             </div>
 
-            <!-- Session History -->
+            <!-- Section 2: Session History -->
             <div class="dash-card">
+              <span class="dash-section-tag tag-blue">Section 2 · Completed Engagements</span>
               <div class="dash-card-title">Completed Session History</div>
               <div class="dash-card-subtitle">Recent completed coaching sessions</div>
               <div class="dash-card-divider"></div>
@@ -234,13 +306,48 @@
               </div>
             </div>
           </div>
+
+          <!-- Section 3: Key Takeaways & Action Points Summary -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-green">Section 3 · Key Insights & Takeaways</span>
+            <div class="dash-card-title">Session Key Takeaways & Coach Feedback</div>
+            <div class="dash-card-subtitle">Actionable highlights from your last session with Dr. Reyes</div>
+            <div class="dash-card-divider"></div>
+            <div style="background: rgba(255,255,255,0.02); border-left: 3px solid var(--gold-primary); padding: 16px; border-radius: 0 8px 8px 0; margin-bottom: 14px;">
+              <div style="font-weight: 700; color: var(--gold-primary); font-size: 0.9rem; margin-bottom: 6px;">Aug 8 Session Breakthrough: Executive Energy Boundaries</div>
+              <p style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.6;">"Shift morning schedule from reactive email responses to 45 minutes of proactive strategic drafting. Focus upcoming board conversation on long-term capital allocation narrative."</p>
+            </div>
+          </div>
+
+          <!-- Section 4: Pre-Session Preparation & Request Hub -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-purple">Section 4 · Session Prep Hub</span>
+            <div class="dash-card-title">Pre-Session Checklist & Preparation Workspace</div>
+            <div class="dash-card-subtitle">Ensure maximum return on investment for your upcoming 1:1 on Aug 22</div>
+            <div class="dash-card-divider"></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+              <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <div style="font-weight: 600; font-size: 0.85rem; color: var(--text-primary); margin-bottom: 4px;">1. Upload Agenda Topics</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Share 2 key topics for discussion 24h prior.</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <div style="font-weight: 600; font-size: 0.85rem; color: var(--text-primary); margin-bottom: 4px;">2. Review Action Items</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Complete Q4 stakeholder communication draft.</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <div style="font-weight: 600; font-size: 0.85rem; color: var(--text-primary); margin-bottom: 4px;">3. Log Reflection</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Log week's wins & challenges in journal.</div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- ── TAB PANEL 3: Goals ── -->
         <div class="dash-panel" id="panel-goals">
           <div class="dash-grid-2">
-            <!-- Leadership Goals -->
+            <!-- Section 1: Leadership Goals -->
             <div class="dash-card">
+              <span class="dash-section-tag tag-gold">Section 1 · Leadership Objectives</span>
               <div class="dash-card-title">Leadership Goals</div>
               <div class="dash-card-subtitle">Current quarter objectives</div>
               <div class="dash-card-divider"></div>
@@ -271,8 +378,9 @@
               </div>
             </div>
 
-            <!-- Coaching Milestones -->
+            <!-- Section 2: Coaching Milestones -->
             <div class="dash-card">
+              <span class="dash-section-tag tag-blue">Section 2 · Program Milestones</span>
               <div class="dash-card-title">Coaching Milestones</div>
               <div class="dash-card-subtitle">Programme progress checkpoints</div>
               <div class="dash-card-divider"></div>
@@ -311,11 +419,77 @@
               </div>
             </div>
           </div>
+
+          <!-- Section 3: Goal Timeline & Target Breakdown -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-green">Section 3 · Target Breakdown</span>
+            <div class="dash-card-title">Goal Target Deadlines & Progress Metrics</div>
+            <div class="dash-card-subtitle">Quarterly milestones and target completion tracking</div>
+            <div class="dash-card-divider"></div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div class="dash-homework-item" style="padding: 0; border: none;">
+                <div class="dash-homework-text" style="color: var(--text-primary); font-weight: 600;">Executive Narrative Mastery</div>
+                <span class="dash-homework-badge" style="color: var(--gold-primary); font-weight: 700; font-size: 0.82rem;">85% Completed · Target: Q3</span>
+              </div>
+              <div style="height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden;">
+                <div style="width: 85%; height: 100%; background: var(--gold-primary);"></div>
+              </div>
+              <div class="dash-homework-item" style="padding: 0; border: none; margin-top: 6px;">
+                <div class="dash-homework-text" style="color: var(--text-primary); font-weight: 600;">Organizational Delegation & Succession</div>
+                <span class="dash-homework-badge" style="color: #3b82f6; font-weight: 700; font-size: 0.82rem;">60% Completed · Target: Q4</span>
+              </div>
+              <div style="height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden;">
+                <div style="width: 60%; height: 100%; background: #3b82f6;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Strategic Competency Mapping Matrix -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-purple">Section 4 · Competency Matrix</span>
+            <div class="dash-card-title">Strategic Competency Alignment Matrix</div>
+            <div class="dash-card-subtitle">How active goals drive strategic organizational capabilities</div>
+            <div class="dash-card-divider"></div>
+            <div class="dash-table-wrapper">
+              <table class="client-table">
+                <thead>
+                  <tr>
+                    <th>Pillar</th>
+                    <th>Associated Goals</th>
+                    <th>Target Outcome</th>
+                    <th>Impact Rating</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong style="color: var(--gold-primary);">Board Presence</strong></td>
+                    <td>Deliver board presentation narrative</td>
+                    <td>High-confidence board signoff</td>
+                    <td><span class="session-status status-completed">High Impact</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong style="color: #3b82f6;">Strategic Execution</strong></td>
+                    <td>Structured strategic thinking routine</td>
+                    <td>30% faster strategic execution</td>
+                    <td><span class="session-status status-upcoming">Core Pillar</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong style="color: #10b981;">People Leadership</strong></td>
+                    <td>Direct report 1:1 cadence & succession plan</td>
+                    <td>Retain top 5% talent</td>
+                    <td><span class="session-status status-scheduled">Transformational</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
 
-        <!-- ── TAB PANEL 4: Progress & Charts ── -->
+        <!-- ── TAB PANEL 4: Progress & Analytics ── -->
         <div class="dash-panel" id="panel-progress">
+          <!-- Section 1: Leadership Growth & Competencies -->
           <div class="dash-card">
+            <span class="dash-section-tag tag-gold">Section 1 · Competency Growth</span>
             <div class="dash-card-title">Leadership Growth & Competency Analytics</div>
             <div class="dash-card-subtitle">Performance tracking and quarterly competency breakdown</div>
             <div class="dash-card-divider"></div>
@@ -356,11 +530,17 @@
                 <div class="progress-bar" data-width="71%" style="width: 71%;"></div>
               </div>
             </div>
+          </div>
 
-            <!-- SVG Visual Analytics: Pie Chart & Bar Chart -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-color);">
-              
-              <!-- Donut / Pie Chart -->
+          <!-- Section 2: Visual Charts -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-blue">Section 2 · Visual Analytics</span>
+            <div class="dash-card-title">Competency Distribution & Growth Charts</div>
+            <div class="dash-card-subtitle">Graphical representation of competency weighting and quarterly gains</div>
+            <div class="dash-card-divider"></div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+              <!-- Pie Chart -->
               <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; text-align: center;">
                 <div style="font-size: 0.85rem; font-weight: 600; color: var(--gold-primary); margin-bottom: 12px;">Competency Weighting (Pie Chart)</div>
                 <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
@@ -406,17 +586,60 @@
                   <text x="186" y="98" fill="var(--text-muted)" font-size="9" text-anchor="middle">Q4</text>
                 </svg>
               </div>
-
             </div>
+          </div>
 
+          <!-- Section 3: 360-Degree Leadership Assessment Scores -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-green">Section 3 · 360 Assessment</span>
+            <div class="dash-card-title">360-Degree Feedback Rating Matrix</div>
+            <div class="dash-card-subtitle">Anonymized feedback scores across rater cohorts</div>
+            <div class="dash-card-divider"></div>
+            <div class="radar-score-grid">
+              <div class="radar-score-item">
+                <div class="radar-score-val">9.1</div>
+                <div class="radar-score-lbl">Board & Chairman</div>
+              </div>
+              <div class="radar-score-item">
+                <div class="radar-score-val">8.6</div>
+                <div class="radar-score-lbl">Executive Peers</div>
+              </div>
+              <div class="radar-score-item">
+                <div class="radar-score-val">8.4</div>
+                <div class="radar-score-lbl">Direct Reports</div>
+              </div>
+              <div class="radar-score-item">
+                <div class="radar-score-val">8.8</div>
+                <div class="radar-score-lbl">External Partners</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Development Velocity & Trends -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-purple">Section 4 · Growth Trends</span>
+            <div class="dash-card-title">Leadership Development Velocity Highlights</div>
+            <div class="dash-card-subtitle">Key qualitative growth highlights synthesized by executive coaches</div>
+            <div class="dash-card-divider"></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+              <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--gold-primary); margin-bottom: 4px;">Top Growth Highlight</div>
+                <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">Narrative structure in board presentations improved by +24%.</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: #3b82f6; margin-bottom: 4px;">Next Milestone Focus</div>
+                <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">Elevating strategic delegation to free up 8 hrs/week for long-term vision.</div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- ── TAB PANEL 5: Resources & Actions ── -->
+        <!-- ── TAB PANEL 5: Resources & Tools ── -->
         <div class="dash-panel" id="panel-resources">
           <div class="dash-grid-2">
-            <!-- Action Items -->
+            <!-- Section 1: Action Items -->
             <div class="dash-card">
+              <span class="dash-section-tag tag-gold">Section 1 · Assigned Tasks</span>
               <div class="dash-card-title">Action Items</div>
               <div class="dash-card-subtitle">Tasks assigned by your coach</div>
               <div class="dash-card-divider"></div>
@@ -448,8 +671,9 @@
               </div>
             </div>
 
-            <!-- Recommended Resources -->
+            <!-- Section 2: Recommended Resources -->
             <div class="dash-card">
+              <span class="dash-section-tag tag-blue">Section 2 · Recommended Reading</span>
               <div class="dash-card-title">Recommended Resources</div>
               <div class="dash-card-subtitle">Curated by your coach</div>
               <div class="dash-card-divider"></div>
@@ -465,6 +689,50 @@
                   <div class="resource-title">The Executive Decision-Making Framework</div>
                   <div class="resource-desc">Stackly's proprietary framework for structuring high-stakes executive decisions under uncertainty.</div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Downloadable Executive Blueprints & Toolkits -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-green">Section 3 · Executive Toolkits</span>
+            <div class="dash-card-title">Downloadable Executive Toolkits & Blueprints</div>
+            <div class="dash-card-subtitle">Templates, board presentation decks, and decision frameworks</div>
+            <div class="dash-card-divider"></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px;">
+              <div class="resource-download-item">
+                <div>
+                  <div style="font-weight: 600; font-size: 0.88rem; color: var(--text-primary);">Board Presentation Deck Template</div>
+                  <div style="font-size: 0.76rem; color: var(--text-muted);">PPTX · 12 slides · Executive Format</div>
+                </div>
+                <a href="404.html" class="quick-action-btn" style="padding: 6px 12px; font-size: 0.78rem;">Download</a>
+              </div>
+              <div class="resource-download-item">
+                <div>
+                  <div style="font-weight: 600; font-size: 0.88rem; color: var(--text-primary);">100-Day Executive Alignment Plan</div>
+                  <div style="font-size: 0.76rem; color: var(--text-muted);">PDF Blueprint · Strategic Roadmap</div>
+                </div>
+                <a href="404.html" class="quick-action-btn" style="padding: 6px 12px; font-size: 0.78rem;">Download</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Audio & Video Leadership Masterclasses -->
+          <div class="dash-card" style="margin-top: 24px;">
+            <span class="dash-section-tag tag-purple">Section 4 · Media Masterclasses</span>
+            <div class="dash-card-title">Audio & Video Leadership Masterclasses</div>
+            <div class="dash-card-subtitle">On-demand audio briefs and executive coaching lectures</div>
+            <div class="dash-card-divider"></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px;">
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                <div style="font-size: 0.72rem; font-weight: 700; color: var(--gold-primary); text-transform: uppercase;">Audio Brief · 18 min</div>
+                <div style="font-weight: 600; font-size: 0.88rem; color: var(--text-primary); margin: 4px 0;">Navigating Crisis Communication with Authority</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Featuring Dr. Ava Reyes & Global Board Chairs.</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                <div style="font-size: 0.72rem; font-weight: 700; color: #3b82f6; text-transform: uppercase;">Video Masterclass · 25 min</div>
+                <div style="font-weight: 600; font-size: 0.88rem; color: var(--text-primary); margin: 4px 0;">Strategic Influence Without Direct Authority</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Keynote on cross-functional alignment.</div>
               </div>
             </div>
           </div>
