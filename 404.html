@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found | Stackly Executive Coaching</title>
+  <meta name="description" content="The page you are looking for does not exist or has been moved. Return to Stackly Executive Coaching home.">
+  <link rel="icon" type="image/webp" href="Assets/stackly logo03.webp">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #ffffff; padding: 40px 20px;">
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <img src="Assets/stackly logo03.webp" alt="Stackly" class="preloader-logo" loading="eager">
+      <div class="preloader-line-wrapper">
+        <div class="preloader-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 404 Standalone Content Container (No Navbar & No Footer) -->
+  <div style="max-width: 640px; width: 100%; text-align: center; margin: auto;">
+    
+    <!-- 404 Headline Card -->
+    <div style="background: #ffffff; border: 1px solid rgba(0,0,0,0.09); padding: 48px 36px; border-radius: var(--radius-lg); box-shadow: var(--shadow-card);">
+      
+      <!-- Brand Logo (Inside Box) -->
+      <a href="index.html" style="display: inline-block; margin-bottom: 20px;">
+        <img src="Assets/stackly logo03.webp" alt="Stackly Executive Coaching Logo" style="height: 76px; width: auto; display: block; margin: 0 auto;">
+      </a>
+
+      <div>
+        <span class="hero-label" style="display: inline-block; margin-bottom: 16px;">Error 404</span>
+      </div>
+      
+      <h1 style="font-size: clamp(4rem, 10vw, 7.5rem); font-weight: 700; line-height: 1; margin: 0 0 16px; color: var(--gold-primary); letter-spacing: -0.02em;">
+        404
+      </h1>
+
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 600; color: var(--text-primary); margin-bottom: 16px;">
+        Strategic Direction Required
+      </h2>
+
+      <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin: 0 auto 36px; max-width: 480px;">
+        The requested page or strategic resource cannot be found. It may have been moved, renamed, or is temporarily unavailable.
+      </p>
+
+      <!-- 2 Required Action Buttons -->
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="index.html" class="btn-primary" style="padding: 14px 28px;">Back to Home</a>
+        <button onclick="window.history.back()" class="btn-secondary" style="padding: 14px 28px; cursor: pointer; border: 1px solid var(--gold-border); background: rgba(201, 168, 76, 0.1); color: var(--gold-primary); font-family: inherit; font-size: 0.9rem; font-weight: 600; border-radius: var(--radius-sm); transition: var(--transition-fast);">Go Back</button>
+      </div>
+    </div>
+
+    <!-- Copyright Sub-text -->
+    <p style="margin-top: 32px; font-size: 0.8rem; color: var(--text-muted);">
+      &copy; 2026 Stackly Executive Advisory. All rights reserved.
+    </p>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+</body>
+</html>

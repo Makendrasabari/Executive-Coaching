@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — Stackly Executive Coaching Platform</title>
+  <meta name="description" content="Join the Stackly Executive Coaching platform. Create your account and begin your leadership transformation journey.">
+  <link rel="icon" type="image/webp" href="Assets/stackly logo03.webp">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <img src="Assets/stackly logo03.webp" alt="Stackly" class="preloader-logo" loading="eager">
+      <div class="preloader-line-wrapper">
+        <div class="preloader-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="auth-page">
+
+    <!-- Visual Side -->
+    <div class="auth-visual">
+      <img src="Assets/case_pe_firm.webp" alt="Leadership team" class="auth-visual-img" loading="eager">
+      <div class="auth-visual-overlay">
+        <blockquote class="auth-visual-quote">
+          "Leadership is not about being the best. It is about making everyone around you better."
+        </blockquote>
+        <p class="auth-visual-attribution">— Stackly Executive Coaching</p>
+      </div>
+    </div>
+
+    <!-- Form Side -->
+    <div class="auth-form-side">
+      <div class="auth-form-container">
+        <a href="index.html" class="auth-back-home">&larr; Back to Home</a>
+
+        <div class="auth-logo">
+          <a href="index.html">
+            <img src="Assets/stackly logo03.webp" alt="Stackly Executive Coaching">
+          </a>
+        </div>
+
+        <h1 class="auth-heading">Create Your Account.</h1>
+        <p class="auth-subheading">Join the Stackly platform to access your coaching sessions, track your leadership goals, and connect with your coach.</p>
+
+        <form class="auth-form" id="signup-form" novalidate>
+
+          <!-- Full Name -->
+          <div class="form-group">
+            <label class="form-label" for="signup-name">Full Name</label>
+            <input type="text" id="signup-name" class="form-input" placeholder="Your full name" autocomplete="name" required>
+            <p class="form-error" id="signup-name-error"></p>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label" for="signup-email">Email Address</label>
+            <input type="email" id="signup-email" class="form-input" placeholder="your@email.com" autocomplete="email" required>
+            <p class="form-error" id="signup-email-error"></p>
+          </div>
+
+          <!-- Organisation (optional) -->
+          <div class="form-group">
+            <label class="form-label" for="signup-org">Organisation <span style="color: var(--text-muted); font-weight: 400;">(optional)</span></label>
+            <input type="text" id="signup-org" class="form-input" placeholder="Your organisation" autocomplete="organization">
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label class="form-label" for="signup-password">Password</label>
+            <input type="password" id="signup-password" class="form-input" placeholder="Minimum 8 characters" autocomplete="new-password" required>
+            <p class="form-error" id="signup-password-error"></p>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-group">
+            <label class="form-label" for="signup-confirm">Confirm Password</label>
+            <input type="password" id="signup-confirm" class="form-input" placeholder="Repeat your password" autocomplete="new-password" required>
+            <p class="form-error" id="signup-confirm-error"></p>
+          </div>
+
+          <!-- Terms -->
+          <div class="form-group" style="margin-bottom: 24px;">
+            <label class="remember-me" style="align-items: flex-start; gap: 12px;">
+              <input type="checkbox" id="signup-terms" style="margin-top: 2px;">
+              <span style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+                I agree to Stackly's <a href="404.html" style="color: var(--gold-primary);">Terms of Service</a> and <a href="404.html" style="color: var(--gold-primary);">Confidentiality Protocol</a>. I understand that all coaching information is strictly private.
+              </span>
+            </label>
+            <p class="form-error" id="terms-error" style="margin-top: 6px;"></p>
+          </div>
+
+          <!-- Success -->
+          <div class="form-success" id="signup-success" style="margin-bottom: 16px;"></div>
+
+          <!-- Submit -->
+          <button type="submit" class="auth-submit" id="signup-submit">Create My Account</button>
+
+          <p class="auth-switch">
+            Already have an account? <a href="login.html">Sign in here</a>
+          </p>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

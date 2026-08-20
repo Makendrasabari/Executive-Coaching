@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coach Dashboard — Stackly Coaching Platform</title>
+  <meta name="description" content="Stackly Coach portal. Manage your executive clients, coaching sessions, notes, progress tracking, and coaching analytics.">
+  <link rel="icon" type="image/webp" href="Assets/stackly logo03.webp">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dashboard-body dashboard-coach">
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <img src="Assets/stackly logo03.webp" alt="Stackly" class="preloader-logo" loading="eager">
+      <div class="preloader-line-wrapper">
+        <div class="preloader-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-wrapper">
+
+    <!-- ═══════ SIDEBAR ═══════ -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-logo">
+          <img src="Assets/stackly logo03.webp" alt="Stackly">
+        </a>
+        <button class="sidebar-close" id="sidebar-close" aria-label="Close sidebar">✕</button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-section-label">Coach Portal</div>
+          <a href="#panel-overview" class="sidebar-nav-item active" data-panel="panel-overview">
+            <span class="nav-item-dot"></span> Dashboard
+          </a>
+          <a href="#panel-clients" class="sidebar-nav-item" data-panel="panel-clients">
+            <span class="nav-item-dot"></span> Clients
+          </a>
+          <a href="#panel-schedule" class="sidebar-nav-item" data-panel="panel-schedule">
+            <span class="nav-item-dot"></span> Schedule
+          </a>
+          <a href="#panel-notes" class="sidebar-nav-item" data-panel="panel-notes">
+            <span class="nav-item-dot"></span> Notes
+          </a>
+          <a href="#panel-analytics" class="sidebar-nav-item" data-panel="panel-analytics">
+            <span class="nav-item-dot"></span> Analytics
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-logout-btn" data-logout id="coach-logout">Sign Out</button>
+      </div>
+    </aside>
+
+    <!-- ═══════ MAIN CONTENT ═══════ -->
+    <main class="dashboard-main">
+
+      <!-- Topbar -->
+      <div class="dashboard-topbar">
+        <div class="topbar-left" style="display:flex; align-items:center; gap: 16px;">
+          <button class="sidebar-toggle-btn" id="sidebar-toggle" aria-label="Toggle sidebar">
+            <span></span><span></span><span></span>
+          </button>
+          <div>
+            <h1 id="dashboard-heading">Coach Dashboard</h1>
+            <p id="topbar-greeting">Good morning — your active executive clients await your expertise.</p>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <a href="404.html" class="topbar-notification" title="Notifications">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span class="notification-badge"></span>
+          </a>
+
+          <!-- Profile Avatar & Dropdown -->
+          <div class="topbar-profile-wrapper">
+            <button class="topbar-profile-btn" id="topbar-profile-btn" type="button" aria-haspopup="true" aria-expanded="false">
+              <div class="topbar-avatar" id="topbar-avatar" title="User Profile">AR</div>
+              <span class="topbar-profile-name" id="topbar-profile-name">Dr. Ava Reyes</span>
+              <span class="topbar-profile-caret">▾</span>
+            </button>
+            <div class="profile-dropdown" id="profile-dropdown">
+              <div class="profile-dropdown-header">
+                <div class="profile-dropdown-avatar" id="dropdown-avatar">AR</div>
+                <div>
+                  <div class="profile-dropdown-name" id="dropdown-name">Dr. Ava Reyes</div>
+                  <div class="profile-dropdown-email" id="dropdown-email">ava.reyes@gmail.com</div>
+                  <span class="profile-dropdown-role" id="dropdown-role">Senior Executive Coach</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="dashboard-content">
+
+        <!-- ── TAB PANEL 1: Overview ── -->
+        <div class="dash-panel active-panel" id="panel-overview">
+          <div class="dash-overview-grid">
+            <div class="dash-stat-card">
+              <div class="dash-stat-label">Active Executives</div>
+              <div class="dash-stat-value" data-count="4" data-suffix="">4</div>
+              <div class="dash-stat-change">+1 joining Sep 2026</div>
+            </div>
+            <div class="dash-stat-card">
+              <div class="dash-stat-label">Sessions This Month</div>
+              <div class="dash-stat-value" data-count="9" data-suffix="">9</div>
+              <div class="dash-stat-change">3 remaining this month</div>
+            </div>
+            <div class="dash-stat-card">
+              <div class="dash-stat-label">Avg. Client Progress</div>
+              <div class="dash-stat-value" data-count="78" data-suffix="%">78%</div>
+              <div class="dash-stat-change">+12% quarter-on-quarter</div>
+            </div>
+            <div class="dash-stat-card">
+              <div class="dash-stat-label">Next Session</div>
+              <div class="dash-stat-value" style="font-size: 1.4rem;">Aug 22</div>
+              <div class="dash-stat-change">10:00 AM · James Mercer</div>
+            </div>
+          </div>
+
+          <!-- Overview Summary Grid -->
+          <div class="dash-grid-2" style="margin-top: 24px;">
+            <div class="dash-card">
+              <div class="dash-card-title">Next Scheduled Session</div>
+              <div class="dash-card-subtitle">Upcoming 1:1 engagement</div>
+              <div class="dash-card-divider"></div>
+              <div class="session-item">
+                <div class="session-avatar">JM</div>
+                <div class="session-info">
+                  <div class="session-name">James Mercer — Leadership Presence</div>
+                  <div class="session-date">Aug 22, 2026 · 10:00 – 11:00 AM</div>
+                </div>
+                <span class="session-status status-upcoming">Tomorrow</span>
+              </div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-title">Recent Client Activity</div>
+              <div class="dash-card-subtitle">Latest submitted reflection</div>
+              <div class="dash-card-divider"></div>
+              <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6;">
+                James Mercer submitted his "Decision-Making Reflection Journal" on Aug 18.
+              </p>
+              <div style="margin-top: 14px;">
+                <span style="font-size: 0.8rem; color: var(--gold-primary); font-weight: 600;">Status: Ready for Review</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TAB PANEL 2: Clients ── -->
+        <div class="dash-panel" id="panel-clients">
+          <div class="dash-card">
+            <div class="dash-card-title">Active Executive Portfolio</div>
+            <div class="dash-card-subtitle">Your current coaching cohort</div>
+            <div class="dash-card-divider"></div>
+
+            <div class="dash-table-wrapper">
+              <table class="client-table">
+                <thead>
+                  <tr>
+                    <th>Executive</th>
+                    <th>Programme</th>
+                    <th>Progress</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="client-name-cell">
+                        <div class="client-mini-avatar">JM</div>
+                        <div>
+                          <div style="font-weight: 600; color: var(--text-primary); font-size: 0.87rem;">James Mercer</div>
+                          <div style="font-size: 0.76rem; color: var(--text-muted);">CEO, Northfield Capital</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Executive Leadership</td>
+                    <td><span style="color: var(--gold-primary); font-weight: 600;">82%</span></td>
+                    <td><span class="session-status status-upcoming">On Track</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="client-name-cell">
+                        <div class="client-mini-avatar">SR</div>
+                        <div>
+                          <div style="font-weight: 600; color: var(--text-primary); font-size: 0.87rem;">Sophia Raines</div>
+                          <div style="font-size: 0.76rem; color: var(--text-muted);">Group CEO, Vantra Global</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>CEO Coaching</td>
+                    <td><span style="color: var(--gold-primary); font-weight: 600;">91%</span></td>
+                    <td><span class="session-status status-completed">Excellent</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="client-name-cell">
+                        <div class="client-mini-avatar">DK</div>
+                        <div>
+                          <div style="font-weight: 600; color: var(--text-primary); font-size: 0.87rem;">David Kinsella</div>
+                          <div style="font-size: 0.76rem; color: var(--text-muted);">Chairman, Arkwell & Co</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Transition Coaching</td>
+                    <td><span style="color: var(--gold-primary); font-weight: 600;">64%</span></td>
+                    <td><span class="session-status status-scheduled">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="client-name-cell">
+                        <div class="client-mini-avatar">LW</div>
+                        <div>
+                          <div style="font-weight: 600; color: var(--text-primary); font-size: 0.87rem;">Laura Whitmore</div>
+                          <div style="font-size: 0.76rem; color: var(--text-muted);">CFO, Halcyon Ventures</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Performance Coaching</td>
+                    <td><span style="color: var(--gold-primary); font-weight: 600;">73%</span></td>
+                    <td><span class="session-status status-scheduled">Active</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TAB PANEL 3: Schedule ── -->
+        <div class="dash-panel" id="panel-schedule">
+          <div class="dash-card">
+            <div class="dash-card-title">Coaching Session Schedule</div>
+            <div class="dash-card-subtitle">Your scheduled coaching calendar</div>
+            <div class="dash-card-divider"></div>
+
+            <div class="session-item">
+              <div class="session-avatar">JM</div>
+              <div class="session-info">
+                <div class="session-name">James Mercer — Leadership Presence</div>
+                <div class="session-date">Aug 22, 2026 · 10:00 – 11:00 AM</div>
+              </div>
+              <span class="session-status status-upcoming">Tomorrow</span>
+            </div>
+            <div class="session-item">
+              <div class="session-avatar">LW</div>
+              <div class="session-info">
+                <div class="session-name">Laura Whitmore — CFO Communication</div>
+                <div class="session-date">Aug 24, 2026 · 2:00 – 3:00 PM</div>
+              </div>
+              <span class="session-status status-upcoming">Upcoming</span>
+            </div>
+            <div class="session-item">
+              <div class="session-avatar">SR</div>
+              <div class="session-info">
+                <div class="session-name">Sophia Raines — Board Strategy Session</div>
+                <div class="session-date">Aug 28, 2026 · 9:00 – 10:00 AM</div>
+              </div>
+              <span class="session-status status-scheduled">Scheduled</span>
+            </div>
+            <div class="session-item">
+              <div class="session-avatar">DK</div>
+              <div class="session-info">
+                <div class="session-name">David Kinsella — Stakeholder Mapping</div>
+                <div class="session-date">Sep 3, 2026 · 11:00 AM – 12:00 PM</div>
+              </div>
+              <span class="session-status status-scheduled">Scheduled</span>
+            </div>
+            <div class="session-item">
+              <div class="session-avatar">JM</div>
+              <div class="session-info">
+                <div class="session-name">James Mercer — Strategic Decision-Making</div>
+                <div class="session-date">Sep 5, 2026 · 10:00 – 11:00 AM</div>
+              </div>
+              <span class="session-status status-scheduled">Scheduled</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TAB PANEL 4: Notes ── -->
+        <div class="dash-panel" id="panel-notes">
+          <div class="dash-card">
+            <div class="dash-card-title">Coaching Notes & Observations</div>
+            <div class="dash-card-subtitle">Session observations and follow-up points</div>
+            <div class="dash-card-divider"></div>
+
+            <div class="session-item" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+              <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+                <div class="session-avatar">JM</div>
+                <div>
+                  <div class="session-name">James Mercer</div>
+                  <div class="session-date">Aug 8, 2026 — Executive Resilience Session</div>
+                </div>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; padding-left: 2px;">James demonstrated strong self-awareness in identifying his energy depletion patterns. Key breakthrough: recognizing that "reactive" mornings undermine his strategic capacity. Agreed to implement structured morning protocol before checking communications.</p>
+            </div>
+
+            <div class="dash-card-divider"></div>
+
+            <div class="session-item" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+              <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+                <div class="session-avatar">SR</div>
+                <div>
+                  <div class="session-name">Sophia Raines</div>
+                  <div class="session-date">Aug 10, 2026 — Board Strategy Session</div>
+                </div>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; padding-left: 2px;">Sophia has significantly elevated her board presence. Pre-read materials are now strategically framed rather than operationally detailed. Recommend focus next session: challenging dissenting board members with confidence.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TAB PANEL 5: Analytics ── -->
+        <div class="dash-panel" id="panel-analytics">
+          <div class="dash-grid-2">
+            <!-- Coaching Analytics & Visual Metrics -->
+            <div class="dash-card">
+              <div class="dash-card-title">Coaching Portfolio Analytics</div>
+              <div class="dash-card-subtitle">Programme effectiveness metrics and client distribution</div>
+              <div class="dash-card-divider"></div>
+
+              <div class="analytics-bar-item">
+                <div class="analytics-label-row">
+                  <span class="analytics-label">Session Completion Rate</span>
+                  <span class="analytics-val">96%</span>
+                </div>
+                <div class="analytics-track">
+                  <div class="analytics-fill" data-width="96%" style="width: 96%;"></div>
+                </div>
+              </div>
+              <div class="analytics-bar-item">
+                <div class="analytics-label-row">
+                  <span class="analytics-label">Goal Achievement (Portfolio)</span>
+                  <span class="analytics-val">78%</span>
+                </div>
+                <div class="analytics-track">
+                  <div class="analytics-fill" data-width="78%" style="width: 78%;"></div>
+                </div>
+              </div>
+              <div class="analytics-bar-item">
+                <div class="analytics-label-row">
+                  <span class="analytics-label">Action Item Follow-Through</span>
+                  <span class="analytics-val">84%</span>
+                </div>
+                <div class="analytics-track">
+                  <div class="analytics-fill" data-width="84%" style="width: 84%;"></div>
+                </div>
+              </div>
+
+              <!-- SVG Visual Analytics: Client Tier Pie Chart & Monthly Session Velocity Bar Chart -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-color);">
+                
+                <!-- Pie Chart: Executive Tier Breakdown -->
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; text-align: center;">
+                  <div style="font-size: 0.82rem; font-weight: 600; color: var(--gold-primary); margin-bottom: 10px;">Executive Tier Breakdown</div>
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                    <svg width="110" height="110" viewBox="0 0 42 42" style="transform: rotate(-90deg);">
+                      <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="rgba(255,255,255,0.05)" stroke-width="5"></circle>
+                      <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--gold-primary)" stroke-width="5" stroke-dasharray="45 55" stroke-dashoffset="0"></circle>
+                      <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#3b82f6" stroke-width="5" stroke-dasharray="35 65" stroke-dashoffset="-45"></circle>
+                      <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#10b981" stroke-width="5" stroke-dasharray="20 80" stroke-dashoffset="-80"></circle>
+                      <text x="50%" y="54%" text-anchor="middle" fill="var(--text-primary)" font-weight="700" font-size="7" style="transform: rotate(90deg); transform-origin: center;">4 Active</text>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Bar Chart: Monthly Session Volume -->
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; text-align: center;">
+                  <div style="font-size: 0.82rem; font-weight: 600; color: var(--gold-primary); margin-bottom: 10px;">Monthly Session Velocity</div>
+                  <svg width="100%" height="95" viewBox="0 0 200 95">
+                    <line x1="10" y1="20" x2="190" y2="20" stroke="rgba(255,255,255,0.08)" stroke-dasharray="2 2"/>
+                    <line x1="10" y1="50" x2="190" y2="50" stroke="rgba(255,255,255,0.08)" stroke-dasharray="2 2"/>
+                    
+                    <rect x="20" y="40" width="18" height="42" rx="3" fill="#3b82f6" opacity="0.8"/>
+                    <text x="29" y="35" fill="var(--text-muted)" font-size="8" text-anchor="middle">14</text>
+                    <text x="29" y="90" fill="var(--text-muted)" font-size="8" text-anchor="middle">May</text>
+
+                    <rect x="65" y="30" width="18" height="52" rx="3" fill="#3b82f6" opacity="0.9"/>
+                    <text x="74" y="25" fill="var(--text-muted)" font-size="8" text-anchor="middle">18</text>
+                    <text x="74" y="90" fill="var(--text-muted)" font-size="8" text-anchor="middle">Jun</text>
+
+                    <rect x="110" y="16" width="18" height="66" rx="3" fill="#3b82f6"/>
+                    <text x="119" y="11" fill="var(--text-muted)" font-size="8" text-anchor="middle">22</text>
+                    <text x="119" y="90" fill="var(--text-muted)" font-size="8" text-anchor="middle">Jul</text>
+
+                    <rect x="155" y="10" width="18" height="72" rx="3" fill="var(--gold-primary)"/>
+                    <text x="164" y="6" fill="var(--gold-primary)" font-size="8" font-weight="bold" text-anchor="middle">26</text>
+                    <text x="164" y="90" fill="var(--gold-primary)" font-size="8" font-weight="bold" text-anchor="middle">Aug</text>
+                  </svg>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Notifications -->
+            <div class="dash-card">
+              <div class="dash-card-title">Recent Notifications</div>
+              <div class="dash-card-subtitle">Platform updates</div>
+              <div class="dash-card-divider"></div>
+
+              <div class="notif-item">
+                <div class="notif-dot"></div>
+                <div>
+                  <div class="notif-text">James Mercer submitted his reflection journal.</div>
+                  <div class="notif-time">1 hour ago</div>
+                </div>
+              </div>
+              <div class="notif-item">
+                <div class="notif-dot"></div>
+                <div>
+                  <div class="notif-text">New executive match: Alexandra Torres.</div>
+                  <div class="notif-time">3 hours ago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /dashboard-content -->
+    </main>
+
+  </div><!-- /dashboard-wrapper -->
+
+  <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    (function() {
+      var h = new Date().getHours();
+      var greeting = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
+      var el = document.getElementById('topbar-greeting');
+      if (el) el.textContent = greeting + ', Dr. Reyes — your 4 active clients await your expertise.';
+    })();
+  </script>
+</body>
+</html>

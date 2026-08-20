@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Stackly Executive Coaching Platform</title>
+  <meta name="description" content="Sign in to the Stackly Executive Coaching client portal. Access your coaching dashboard, sessions, and leadership resources.">
+  <link rel="icon" type="image/webp" href="Assets/stackly logo03.webp">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <img src="Assets/stackly logo03.webp" alt="Stackly" class="preloader-logo" loading="eager">
+      <div class="preloader-line-wrapper">
+        <div class="preloader-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="auth-page">
+
+    <!-- Visual Side -->
+    <div class="auth-visual">
+      <img src="Assets/leadership_team.webp" alt="Executive leadership" class="auth-visual-img" loading="eager">
+      <div class="auth-visual-overlay">
+        <blockquote class="auth-visual-quote">
+          "The quality of your leadership is determined by the quality of the questions you are willing to ask yourself."
+        </blockquote>
+        <p class="auth-visual-attribution">— Stackly Executive Coaching</p>
+      </div>
+    </div>
+
+    <!-- Form Side -->
+    <div class="auth-form-side">
+      <div class="auth-form-container">
+        <a href="index.html" class="auth-back-home">&larr; Back to Home</a>
+
+        <div class="auth-logo">
+          <a href="index.html">
+            <img src="Assets/stackly logo03.webp" alt="Stackly Executive Coaching">
+          </a>
+        </div>
+
+        <h1 class="auth-heading">Welcome Back.</h1>
+        <p class="auth-subheading">Sign in to access your executive coaching portal and continue your leadership journey.</p>
+
+        <form class="auth-form" id="login-form" novalidate>
+
+          <!-- Role Selector -->
+          <div style="margin-bottom: 20px;">
+            <label class="form-label" style="display: block; margin-bottom: 12px;">I am signing in as</label>
+            <div class="auth-role-selector">
+              <div class="role-option">
+                <input type="radio" name="role" id="role-executive" value="executive" checked>
+                <label class="role-label" for="role-executive">
+                  <span class="role-label-title">Executive / Client</span>
+                  <span class="role-label-desc">Access your coaching sessions, goals, and progress</span>
+                </label>
+              </div>
+              <div class="role-option">
+                <input type="radio" name="role" id="role-coach" value="coach">
+                <label class="role-label" for="role-coach">
+                  <span class="role-label-title">Coach / Mentor</span>
+                  <span class="role-label-desc">Manage your clients, sessions, and coaching notes</span>
+                </label>
+              </div>
+            </div>
+            <p class="form-error" id="role-error"></p>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label" for="login-email">Email Address</label>
+            <input type="email" id="login-email" class="form-input" placeholder="your@email.com" autocomplete="email" required>
+            <p class="form-error" id="email-error"></p>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label class="form-label" for="login-password">Password</label>
+            <input type="password" id="login-password" class="form-input" placeholder="Enter your password" autocomplete="current-password" required>
+            <p class="form-error" id="password-error"></p>
+          </div>
+
+          <!-- Extras -->
+          <div class="auth-extras">
+            <label class="remember-me">
+              <input type="checkbox" id="remember-me">
+              <span>Remember me</span>
+            </label>
+            <a href="404.html" class="forgot-link">Forgot password?</a>
+          </div>
+
+          <!-- Success message -->
+          <div class="form-success" id="login-success" style="margin-bottom: 16px;"></div>
+
+          <!-- Submit -->
+          <button type="submit" class="auth-submit" id="login-submit">Sign In to My Portal</button>
+
+          <p class="auth-switch">
+            Don't have an account? <a href="signup.html">Create your account</a>
+          </p>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
